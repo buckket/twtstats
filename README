@@ -1,0 +1,50 @@
+twtstats
+~~~~~~~~
+
+I accidentally stumbled upon twint[0] and wanted to make use of the
+data that piled up on my hard drive. While at first I was pleased
+with simply calculating a few statistical values of interest,
+I soon figured it would be nicer to generate some kind of graph,
+which could visualize the relationships between me and others much
+better than plain old numbers and sorted lists.
+
+Such tools already exist of course, but usually this are web-based
+services which require OAUTH access, are not transparent about how
+they generate the graphs and only use a handful of tweets to
+extract the necessary information.
+
+Thanks to pandas[1] and graphviz[2] the hardest part is already
+being taken care of. The only thing left to do is downloading
+the required data set and counting the interaction that took place
+between all users of interest. I figured the best way to start is to
+take the 10 most mentioned users and also grab their tweets to see
+if the interaction is mutual or one-sided. On top of that we also
+include their most mentioned users as well to see if our network
+interacts with users we ourself don’t. Those edges are highlighted
+by using a dashed line. Additionally the penwith scales
+logarithmically with the weight, which in turn is the sum of every
+interaction that took place between two users. sfdp(1) then
+generates this rather nice looking graphs in seconds.
+
+This is just an experiment because I was interested in graph
+generation and visualisation. I don’t really know what I’m doing.
+Definitely not a data science / statistics guru (just yet).
+
+If you have suggestions on how improve this or if you have
+spotted a fundamental mistake feel free to contact me.
+
+[0]: https://github.com/haccer/twint
+[1]: https://pandas.pydata.org/
+[2]: https://www.graphviz.org/
+
+Requirements:
+- Python 3 (with pandas)
+- graphviz
+- twint
+
+Usage:
+- python build_network --user foo
+- sfdp graph_gv -Tpng -o graph.png
+
+License:
+GPLv3+
