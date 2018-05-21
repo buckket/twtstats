@@ -44,7 +44,7 @@ Requirements:
 
 Usage:
 - python build_network --user foo
-- sfdp graph.gv -Tpng -o graph.png
+- sfdp -Goverlap=false -Gsplines=true graph.gv -Tpng -o graph.png
 
 License:
 GPLv3+
